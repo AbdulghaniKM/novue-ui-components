@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #9333ea; /* Purple theme */
+  --color-background: #1f2937; /* Dark mode bg */
+  --color-text: #f3f4f6; /* Light text for dark mode */
+}
+
+body {
+  @apply bg-[--color-background] text-[--color-text];
+}
