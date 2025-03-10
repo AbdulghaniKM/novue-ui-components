@@ -1,11 +1,193 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@theme {
-  --color-primary: #9333ea; /* Purple theme */
-  --color-background: #1f2937; /* Dark mode bg */
-  --color-text: #f3f4f6; /* Light text for dark mode */
+/* Theme System */
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary-50: #f5f3ff;
+    --color-primary-100: #ede9fe;
+    --color-primary-200: #ddd6fe;
+    --color-primary-300: #c4b5fd;
+    --color-primary-400: #a78bfa;
+    --color-primary-500: #8b5cf6;
+    --color-primary-600: #7c3aed;
+    --color-primary-700: #6d28d9;
+    --color-primary-800: #5b21b6;
+    --color-primary-900: #4c1d95;
+    --color-primary: var(--color-primary-600);
+
+    /* Semantic Colors */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+
+    /* Neutral Colors */
+    --color-neutral-50: #f9fafb;
+    --color-neutral-100: #f3f4f6;
+    --color-neutral-200: #e5e7eb;
+    --color-neutral-300: #d1d5db;
+    --color-neutral-400: #9ca3af;
+    --color-neutral-500: #6b7280;
+    --color-neutral-600: #4b5563;
+    --color-neutral-700: #374151;
+    --color-neutral-800: #1f2937;
+    --color-neutral-900: #111827;
+
+    /* Component Specific */
+    --button-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    --button-shadow-hover: 0 4px 6px rgb(0 0 0 / 0.1);
+    --button-font: ui-sans-serif, system-ui, sans-serif;
+    --button-border-width: 2px;
+    --button-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --button-radius-sm: 0.375rem;
+    --button-radius-md: 0.5rem;
+    --button-radius-lg: 0.75rem;
+    --button-radius-full: 9999px;
+
+    /* Layout */
+    --spacing-page: 1.5rem;
+    --max-width-content: 1200px;
+    --header-height: 4rem;
+    --footer-height: 3rem;
+
+    /* Typography */
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --font-serif: ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, monospace;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Z-index Layers */
+    --z-negative: -1;
+    --z-elevate: 1;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+
+    /* Animations */
+    --animation-duration-fast: 150ms;
+    --animation-duration-normal: 250ms;
+    --animation-duration-slow: 350ms;
+    --animation-timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Light Theme Colors */
+    --color-background: var(--color-neutral-50);
+    --color-surface: white;
+    --color-text: var(--color-neutral-900);
+    --color-text-muted: var(--color-neutral-500);
+    --color-border: var(--color-neutral-200);
+  }
+
+  /* Dark Theme */
+  .dark {
+    --color-background: var(--color-neutral-900);
+    --color-surface: var(--color-neutral-800);
+    --color-text: var(--color-neutral-50);
+    --color-text-muted: var(--color-neutral-400);
+    --color-border: var(--color-neutral-700);
+
+    /* Adjust shadows for dark mode */
+    --button-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
+    --button-shadow-hover: 0 4px 6px rgb(0 0 0 / 0.4);
+  }
 }
 
-body {
-  @apply bg-[--color-background] text-[--color-text];
+/* Base Styles */
+@layer base {
+  html {
+    @apply antialiased;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+  }
+
+  body {
+    @apply bg-[--color-background] text-[--color-text];
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  /* Typography Defaults */
+  h1 {
+    @apply text-4xl font-bold mb-6;
+  }
+
+  h2 {
+    @apply text-3xl font-bold mb-4;
+  }
+
+  h3 {
+    @apply text-2xl font-bold mb-3;
+  }
+
+  h4 {
+    @apply text-xl font-bold mb-2;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  a {
+    @apply text-[--color-primary] hover:underline;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+  }
+
+  .transition-smooth {
+    transition-timing-function: var(--animation-timing-ease);
+  }
+
+  .transition-bounce {
+    transition-timing-function: var(--animation-timing-bounce);
+  }
+}
+
+/* Component Specific Styles */
+@layer components {
+  /* Button Base - These will be merged with the dynamic classes */
+  .btn-base {
+    font-family: var(--button-font);
+    transition: all var(--button-transition);
+    box-shadow: var(--button-shadow);
+  }
+
+  .btn-base:hover {
+    box-shadow: var(--button-shadow-hover);
+  }
+
+  /* Form Controls */
+  .form-input {
+    @apply w-full px-4 py-2 rounded-md border border-[--color-border]
+           bg-[--color-surface] text-[--color-text]
+           focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-opacity-50;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-[--color-surface] rounded-lg p-6 shadow-lg border border-[--color-border];
+  }
+
+  /* Container */
+  .container-custom {
+    @apply mx-auto px-4 max-w-[--max-width-content];
+  }
 }
