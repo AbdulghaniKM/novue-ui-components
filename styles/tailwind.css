@@ -3,18 +3,31 @@
 /* Theme System */
 @layer base {
   :root {
-    /* Primary Colors */
-    --color-primary-50: #f5f3ff;
-    --color-primary-100: #ede9fe;
-    --color-primary-200: #ddd6fe;
-    --color-primary-300: #c4b5fd;
-    --color-primary-400: #a78bfa;
-    --color-primary-500: #8b5cf6;
-    --color-primary-600: #7c3aed;
-    --color-primary-700: #6d28d9;
-    --color-primary-800: #5b21b6;
-    --color-primary-900: #4c1d95;
+    /* Primary Colors - Lavender */
+    --color-primary-50: #f9f6fe;
+    --color-primary-100: #f1eafd;
+    --color-primary-200: #e6d9fb;
+    --color-primary-300: #d2bbf7;
+    --color-primary-400: #ac80ee;
+    --color-primary-500: #9b65e7;
+    --color-primary-600: #8345d8;
+    --color-primary-700: #6f33bd;
+    --color-primary-800: #5f2e9b;
+    --color-primary-900: #4e277c;
     --color-primary: var(--color-primary-600);
+
+    /* Secondary Colors - Corduroy */
+    --color-secondary-50: #f5f8f7;
+    --color-secondary-100: #dfe8e6;
+    --color-secondary-200: #bfd0cd;
+    --color-secondary-300: #98b0ad;
+    --color-secondary-400: #728f8c;
+    --color-secondary-500: #506a68;
+    --color-secondary-600: #455c5b;
+    --color-secondary-700: #3a4b4b;
+    --color-secondary-800: #313e3d;
+    --color-secondary-900: #2b3635;
+    --color-secondary: var(--color-secondary-600);
 
     /* Semantic Colors */
     --color-success: #10b981;
@@ -98,96 +111,5 @@
     /* Adjust shadows for dark mode */
     --button-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
     --button-shadow-hover: 0 4px 6px rgb(0 0 0 / 0.4);
-  }
-}
-
-/* Base Styles */
-@layer base {
-  html {
-    @apply antialiased;
-    font-family: var(--font-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-base);
-  }
-
-  body {
-    @apply bg-[--color-background] text-[--color-text];
-    margin: 0;
-    min-height: 100vh;
-  }
-
-  /* Typography Defaults */
-  h1 {
-    @apply text-4xl font-bold mb-6;
-  }
-
-  h2 {
-    @apply text-3xl font-bold mb-4;
-  }
-
-  h3 {
-    @apply text-2xl font-bold mb-3;
-  }
-
-  h4 {
-    @apply text-xl font-bold mb-2;
-  }
-
-  p {
-    @apply mb-4;
-  }
-
-  a {
-    @apply text-[--color-primary] hover:underline;
-  }
-}
-
-/* Utility Classes */
-@layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-  }
-
-  .text-shadow-lg {
-    text-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-  }
-
-  .transition-smooth {
-    transition-timing-function: var(--animation-timing-ease);
-  }
-
-  .transition-bounce {
-    transition-timing-function: var(--animation-timing-bounce);
-  }
-}
-
-/* Component Specific Styles */
-@layer components {
-  /* Button Base - These will be merged with the dynamic classes */
-  .btn-base {
-    font-family: var(--button-font);
-    transition: all var(--button-transition);
-    box-shadow: var(--button-shadow);
-  }
-
-  .btn-base:hover {
-    box-shadow: var(--button-shadow-hover);
-  }
-
-  /* Form Controls */
-  .form-input {
-    @apply w-full px-4 py-2 rounded-md border border-[--color-border]
-           bg-[--color-surface] text-[--color-text]
-           focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-opacity-50;
-  }
-
-  /* Card */
-  .card {
-    @apply bg-[--color-surface] rounded-lg p-6 shadow-lg border border-[--color-border];
-  }
-
-  /* Container */
-  .container-custom {
-    @apply mx-auto px-4 max-w-[--max-width-content];
   }
 }
